@@ -9,7 +9,8 @@ const EventsList = () => {
 
   useEffect(() => {
     const fetchEvents = async () => {
-      const response = await fetch('/api/events');
+      const response = await axios.get('http://localhost:3003/api/events');
+      console.log(response.data)
       setEvents(response.data);
       // setEvents(eventsData)
     };
@@ -17,7 +18,7 @@ const EventsList = () => {
   }, []);
 
   return (
-    <div className="events-page">
+    events && <div className="events-page">
       <div className="events-sidebar">
         <h3>Categories</h3>
         <div className="filter-tags">

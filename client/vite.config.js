@@ -18,6 +18,9 @@ export default defineConfig({
     proxy: {
       '/api/events': {
         target: 'http://localhost:3003'
+      },
+      'events': {
+        target: 'http://localhost:3003'
       }
     }
   }
