@@ -9,9 +9,9 @@ const EventsList = () => {
 
   useEffect(() => {
     const fetchEvents = async () => {
-      // const response = await axios.get('/api/events');
-      // setEvents(response.data);
-      setEvents(eventsData)
+      const response = await fetch('/api/events');
+      setEvents(response.data);
+      // setEvents(eventsData)
     };
     fetchEvents();
   }, []);
