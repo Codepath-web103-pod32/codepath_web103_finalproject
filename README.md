@@ -41,14 +41,16 @@ Backend:
 
 ### Events Display
 
-- [ ] Display all events and their basic info (e.g., name, club, date, location, description, number of registered members, number of waitlist).
-- [ ] Provide options for filtering and sorting events based on needs (e.g., category, date, location, register status).
+- [✅] Display all events and their basic info (e.g., name, club, date, location, description, number of registered members, number of waitlist).
+- [✅] Provide options for filtering and sorting events based on needs (e.g., category, date, location, register status).
+- [ ] Provide options for fuzzy searching events based on their names.
 
 [gif goes here]
 
 ### Events Statistic
 
 - [ ] Statistic about events (e.g., joined/registered ratio, comments/feedbacks, rating)
+- [ ] Users can review all events they have registered
 
 [gif goes here]
 
