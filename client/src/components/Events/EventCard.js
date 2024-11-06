@@ -8,7 +8,7 @@ const EventCard = ({ event }) => {
 
   return (
     <div className="event-card">
-      <img src={event.image} alt={event.name} />
+      <img src={event.images[0]?.url} alt={event.name} />
       <h3>{event.name}</h3>
       <p>{formattedStart} - {formattedEnd}</p>
       <Link to={`/events/${event.id}`}>View Details</Link>
