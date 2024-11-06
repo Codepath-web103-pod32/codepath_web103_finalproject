@@ -146,7 +146,7 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
     + url
     + taken_date
 
-- [x] /api/events/search/:searchName -> get first 5 events whose name is similar (fuzzy search) to the searchName, each event includes:
+- [ ] /api/events/search/:searchName -> get first 5 events whose name is similar (fuzzy search) to the searchName, each event includes:
   *** This searching uses function strict_word_similarity in pg_trgm, a module determines the similarity of alphanumeric text based on trigram matching, as well as index operator classes that support fast searching for similar strings. ***
   + id
   + name

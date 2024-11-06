@@ -180,8 +180,6 @@ const createTables = async () => {
         REFERENCES events(id)
         ON DELETE CASCADE
     );
-
-    CREATE EXTENSION pg_trgm;
   `
 
   try {
