@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "delete": "node --require dotenv/config config/delete-database.js",
     "reset": "node --require dotenv/config config/reset.js",
     "start": "npm run reset && nodemon server.js",
     "dev": "nodemon --require dotenv/config server.js"
