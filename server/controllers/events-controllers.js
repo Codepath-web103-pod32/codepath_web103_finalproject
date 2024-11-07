@@ -2,7 +2,10 @@ import pool from '../config/database.js'
 
 const getEvents = async (_, res) => {
   try {
+    //ChauPhan: query events
     const results = await pool.query('SELECT * FROM events ORDER BY id ASC')
+
+    //ChauPhan: query images to each event
     const promises = results.rows.map(async (event) => {
       const selectImagesQuery = `
         SELECT
@@ -32,6 +35,7 @@ const getEvents = async (_, res) => {
 const getEventById = async (req, res) => {
   try {
     const eventId = req.params.eventId
+    //ChauPhan: query event by Id
     const selectQuery = `
       SELECT
         events.id,
@@ -47,6 +51,7 @@ const getEventById = async (req, res) => {
     const result = await pool.query(selectQuery, [eventId])
     const eventResult = result.rows[0]
 
+    //ChauPhan: query locations for the event
     const selectLocationsQuery = `
       SELECT
         locations.id,
@@ -61,6 +66,7 @@ const getEventById = async (req, res) => {
     const locationResults = locations.rows
     eventResult.locations = locationResults
 
+    //ChauPhan: query categories for the event
     const selectCategoriesQuery = `
       SELECT
         categories.id,
@@ -75,6 +81,7 @@ const getEventById = async (req, res) => {
     const categoriesResults = categories.rows
     eventResult.categories = categoriesResults
 
+    //ChauPhan: query images for the event
     const selectImagesQuery = `
       SELECT
         images.id,
@@ -90,6 +97,7 @@ const getEventById = async (req, res) => {
     const imagesResults = images.rows
     eventResult.images = imagesResults
 
+    //ChauPhan: query all clubs organizing the event
     const selectClubQuery = `
       SELECT
         clubs.id,
@@ -103,7 +111,7 @@ const getEventById = async (req, res) => {
     const clubsResults = clubs.rows
     eventResult.clubs = clubsResults
 
-    console.log(eventResult)
+    //ChauPhan: send the final event result
     res.status(200).json(eventResult)
   } catch (err) {
     console.error('get Event by Id error: ', err)
@@ -114,6 +122,7 @@ const getEventById = async (req, res) => {
 const getEventsByCategoryId = async (req, res) => {
   const categoryId = req.params.categoryId
   try {
+    //ChauPhan: query events by category Id
     const selectEventsQuery = `
       SELECT
         events.id,
@@ -130,6 +139,8 @@ const getEventsByCategoryId = async (req, res) => {
       ORDER BY id ASC
     `
     const results = await pool.query(selectEventsQuery, [categoryId])
+
+    //ChauPhan: query images to each event
     const promises = results.rows.map(async (event) => {
       const selectImagesQuery = `
         SELECT
@@ -149,6 +160,8 @@ const getEventsByCategoryId = async (req, res) => {
         })
     })
     await Promise.all(promises)
+    
+    //ChauPhan: send the final event results
     res.status(200).json(results.rows)
   } catch (err) {
     console.error('get Events By Category Id error: ', err)
@@ -159,6 +172,7 @@ const getEventsByCategoryId = async (req, res) => {
 const getEventsByLocationId = async (req, res) => {
   const locationId = req.params.locationId
   try {
+    //ChauPhan: query events by location Id
     const selectEventsQuery = `
       SELECT
         events.id,
@@ -175,6 +189,8 @@ const getEventsByLocationId = async (req, res) => {
       ORDER BY id ASC
     `
     const results = await pool.query(selectEventsQuery, [locationId])
+    
+    //ChauPhan: query images for each event
     const promises = results.rows.map(async (event) => {
       const selectImagesQuery = `
         SELECT
@@ -194,6 +210,8 @@ const getEventsByLocationId = async (req, res) => {
         })
     })
     await Promise.all(promises)
+
+    //ChauPhan: send the final event results
     res.status(200).json(results.rows)
   } catch (err) {
     console.error('get Events By Location Id error: ', err)
@@ -203,6 +221,7 @@ const getEventsByLocationId = async (req, res) => {
 
 const getAvailableEvents = async (_, res) => {
   try {
+    //ChauPhan: query all available events
     const selectEventsQuery = `
       SELECT *
       FROM events
@@ -210,6 +229,8 @@ const getAvailableEvents = async (_, res) => {
       ORDER BY id ASC
     `
     const results = await pool.query(selectEventsQuery)
+
+    //ChauPhan: query images for each event
     const promises = results.rows.map(async (event) => {
       const selectImagesQuery = `
         SELECT
@@ -229,6 +250,8 @@ const getAvailableEvents = async (_, res) => {
         })
     })
     await Promise.all(promises)
+
+    //ChauPhan: send the final event results
     res.status(200).json(results.rows)
   } catch (err) {
     console.error('get Available Events error: ', err)
@@ -236,41 +259,41 @@ const getAvailableEvents = async (_, res) => {
   }
 }
 
-const searchEventsByName = async (req, res) => {
-  const searchName = req.params.searchName
-  try {
-    const selectEventsQuery = `
-      SELECT *
-      FROM events
-      ORDER BY STRICT_WORD_SIMILARITY(name, $1) DESC
-      LIMIT 5;
-    `
-    const results = await pool.query(selectEventsQuery, [searchName])
-    const promises = results.rows.map(async (event) => {
-      const selectImagesQuery = `
-        SELECT
-          images.id,
-          images.name,
-          images.url,
-          images.taken_date
-        FROM images
-        JOIN event_images
-        ON event_images.image_id = images.id
-        WHERE event_images.event_id = $1
-      `
-      await pool.query(selectImagesQuery, [event.id])
-        .then(res => res.rows)
-        .then(res => {
-          event.images = res
-        })
-    })
-    await Promise.all(promises)
-    res.status(200).json(results.rows)
-  } catch (err) {
-    console.error('Seach Events by Name error: ', err)
-    res.status(409).json({error: err})
-  }
-}
+// const searchEventsByName = async (req, res) => {
+//   const searchName = req.params.searchName
+//   try {
+//     const selectEventsQuery = `
+//       SELECT *
+//       FROM events
+//       ORDER BY STRICT_WORD_SIMILARITY(name, $1) DESC
+//       LIMIT 5;
+//     `
+//     const results = await pool.query(selectEventsQuery, [searchName])
+//     const promises = results.rows.map(async (event) => {
+//       const selectImagesQuery = `
+//         SELECT
+//           images.id,
+//           images.name,
+//           images.url,
+//           images.taken_date
+//         FROM images
+//         JOIN event_images
+//         ON event_images.image_id = images.id
+//         WHERE event_images.event_id = $1
+//       `
+//       await pool.query(selectImagesQuery, [event.id])
+//         .then(res => res.rows)
+//         .then(res => {
+//           event.images = res
+//         })
+//     })
+//     await Promise.all(promises)
+//     res.status(200).json(results.rows)
+//   } catch (err) {
+//     console.error('Seach Events by Name error: ', err)
+//     res.status(409).json({error: err})
+//   }
+// }
 
 export default {
   getEvents,
@@ -278,5 +301,5 @@ export default {
   getEventsByCategoryId,
   getEventsByLocationId,
   getAvailableEvents,
-  searchEventsByName,
+  // searchEventsByName,
 }

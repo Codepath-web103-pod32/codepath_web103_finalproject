@@ -102,7 +102,7 @@ const EVENTS = [
     "startTime": "2023-12-12T18:00:00Z",
     "endTime": "2023-12-12T20:00:00Z",
     "capacity": 30,
-    "registered": 25,
+    "registered": 30,
     "location": [9, 10],
     "category": [2, 4],
     "image": [1, 2, 3]
@@ -114,7 +114,7 @@ const EVENTS = [
     "startTime": "2023-12-15T14:00:00Z",
     "endTime": "2023-12-15T16:00:00Z",
     "capacity": 20,
-    "registered": 18,
+    "registered": 20,
     "location": [3],
     "category": [1, 2, 4],
     "image": [1, 2, 3]
@@ -126,7 +126,7 @@ const EVENTS = [
     "startTime": "2023-11-08T18:00:00Z",
     "endTime": "2023-11-10T18:00:00Z",
     "capacity": 50,
-    "registered": 40,
+    "registered": 50,
     "location": [5],
     "category": [1],
     "image": [1, 2, 3]
@@ -138,7 +138,7 @@ const EVENTS = [
     "startTime": "2023-11-12T19:00:00Z",
     "endTime": "2023-11-12T21:00:00Z",
     "capacity": 30,
-    "registered": 25,
+    "registered": 30,
     "location": [1],
     "category": [1],
     "image": [1, 2, 3]
@@ -150,7 +150,7 @@ const EVENTS = [
     "startTime": "2023-11-18T14:00:00Z",
     "endTime": "2023-11-18T17:00:00Z",
     "capacity": 20,
-    "registered": 15,
+    "registered": 20,
     "location": [9, 10],
     "category": [5],
     "image": [1, 2, 3]
@@ -162,7 +162,7 @@ const EVENTS = [
     "startTime": "2023-11-23T19:00:00Z",
     "endTime": "2023-11-23T22:00:00Z",
     "capacity": 30,
-    "registered": 20,
+    "registered": 30,
     "location": [9, 10],
     "category": [2, 5],
     "image": [1, 2, 3]
@@ -174,7 +174,7 @@ const EVENTS = [
     "startTime": "2023-11-26T14:00:00Z",
     "endTime": "2023-11-26T16:00:00Z",
     "capacity": 20,
-    "registered": 18,
+    "registered": 20,
     "location": [8],
     "category": [2, 5],
     "image": [1, 2, 3]
@@ -186,7 +186,7 @@ const EVENTS = [
     "startTime": "2023-11-29T18:00:00Z",
     "endTime": "2023-11-29T21:00:00Z",
     "capacity": 30,
-    "registered": 25,
+    "registered": 30,
     "location": [4, 5, 6],
     "category": [3, 4],
     "image": [1, 2, 3]
@@ -198,7 +198,7 @@ const EVENTS = [
     "startTime": "2023-12-03T12:00:00Z",
     "endTime": "2023-12-03T14:00:00Z",
     "capacity": 20,
-    "registered": 15,
+    "registered": 20,
     "location": [8],
     "category": [1],
     "image": [1, 2, 3]
@@ -210,7 +210,7 @@ const EVENTS = [
     "startTime": "2023-12-07T10:00:00Z",
     "endTime": "2023-12-07T13:00:00Z",
     "capacity": 20,
-    "registered": 18,
+    "registered": 20,
     "location": [9, 10],
     "category": [3],
     "image": [1, 2, 3]
