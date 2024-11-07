@@ -259,41 +259,46 @@ const getAvailableEvents = async (_, res) => {
   }
 }
 
-// const searchEventsByName = async (req, res) => {
-//   const searchName = req.params.searchName
-//   try {
-//     const selectEventsQuery = `
-//       SELECT *
-//       FROM events
-//       ORDER BY STRICT_WORD_SIMILARITY(name, $1) DESC
-//       LIMIT 5;
-//     `
-//     const results = await pool.query(selectEventsQuery, [searchName])
-//     const promises = results.rows.map(async (event) => {
-//       const selectImagesQuery = `
-//         SELECT
-//           images.id,
-//           images.name,
-//           images.url,
-//           images.taken_date
-//         FROM images
-//         JOIN event_images
-//         ON event_images.image_id = images.id
-//         WHERE event_images.event_id = $1
-//       `
-//       await pool.query(selectImagesQuery, [event.id])
-//         .then(res => res.rows)
-//         .then(res => {
-//           event.images = res
-//         })
-//     })
-//     await Promise.all(promises)
-//     res.status(200).json(results.rows)
-//   } catch (err) {
-//     console.error('Seach Events by Name error: ', err)
-//     res.status(409).json({error: err})
-//   }
-// }
+const searchEventsByName = async (req, res) => {
+  const searchName = req.params.searchName
+  try {
+    //ChauPhan: query events by name using pg_trgm extension
+    const selectEventsQuery = `
+      SELECT *
+      FROM events
+      ORDER BY STRICT_WORD_SIMILARITY(name, $1) DESC
+      LIMIT 5;
+    `
+    const results = await pool.query(selectEventsQuery, [searchName])
+
+    //ChauPhan: query images for each event
+    const promises = results.rows.map(async (event) => {
+      const selectImagesQuery = `
+        SELECT
+          images.id,
+          images.name,
+          images.url,
+          images.taken_date
+        FROM images
+        JOIN event_images
+        ON event_images.image_id = images.id
+        WHERE event_images.event_id = $1
+      `
+      await pool.query(selectImagesQuery, [event.id])
+        .then(res => res.rows)
+        .then(res => {
+          event.images = res
+        })
+    })
+    await Promise.all(promises)
+
+    //ChauPhan: send the final event results
+    res.status(200).json(results.rows)
+  } catch (err) {
+    console.error('Seach Events by Name error: ', err)
+    res.status(409).json({error: err})
+  }
+}
 
 export default {
   getEvents,
@@ -301,5 +306,5 @@ export default {
   getEventsByCategoryId,
   getEventsByLocationId,
   getAvailableEvents,
-  // searchEventsByName,
+  searchEventsByName,
 }

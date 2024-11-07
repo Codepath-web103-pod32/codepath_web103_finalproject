@@ -207,4 +207,45 @@ const getClubsByCategoryId = async (req, res) => {
   }
 }
 
-export default {getClubs, getClubById, getClubsByCategoryId}
+const searchClubsByName = async (req, res) => {
+  const searchName = req.params.searchName
+  try {
+    //ChauPhan: query all clubs by name using pg_trgm extension
+    const selectClubsQuery = `
+      SELECT *
+      FROM clubs
+      ORDER BY STRICT_WORD_SIMILARITY(name, $1) DESC
+      LIMIT 5;
+    `
+    const results = await pool.query(selectClubsQuery, [searchName])
+
+    //ChauPhan: query images for each club
+    const promises = results.rows.map(async (club) => {
+      const selectImagesQuery = `
+        SELECT
+          images.id,
+          images.name,
+          images.url,
+          images.taken_date
+        FROM images
+        JOIN club_images
+        ON club_images.image_id = images.id
+        WHERE club_images.club_id = $1
+      `
+      await pool.query(selectImagesQuery, [club.id])
+        .then(res => res.rows)
+        .then(res => {
+          club.images = res
+        })
+    })
+    await Promise.all(promises)
+    
+    //ChauPhan: send the final club results
+    res.status(200).json(results.rows)
+  } catch (err) {
+    console.error('Seach Clubs by Name error: ', err)
+    res.status(409).json({error: err})
+  }
+}
+
+export default {getClubs, getClubById, getClubsByCategoryId, searchClubsByName}
