@@ -26,6 +26,8 @@ const createTables = async () => {
       events
     CASCADE;
 
+    DROP EXTENSION IF EXISTS pg_trgm;
+
     CREATE TABLE IF NOT EXISTS clubs (
       id SERIAL PRIMARY KEY,
       name VARCHAR(250) NOT NULL,
@@ -180,6 +182,8 @@ const createTables = async () => {
         REFERENCES events(id)
         ON DELETE CASCADE
     );
+
+    CREATE EXTENSION pg_trgm;
   `
 
   try {
