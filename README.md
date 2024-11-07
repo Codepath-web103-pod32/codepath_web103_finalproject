@@ -45,7 +45,7 @@ Backend:
 - [✅] Provide options for filtering and sorting events based on needs (e.g., category, date, location, register status).
 - [ ] Provide options for fuzzy searching events based on their names.
 
-[gif goes here]
+![Milestone3](./milestone3.mp4)
 
 ### Events Statistic
 
