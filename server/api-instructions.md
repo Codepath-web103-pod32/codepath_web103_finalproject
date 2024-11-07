@@ -6,7 +6,7 @@ In /server directory:
 ClubHub API has following endpoints. The endpoints with checked are already implemented.
 
 # Clubs
-- [ ] /api/clubs -> get all clubs, each club includes:
+- [x] /api/clubs -> get all clubs, each club includes:
   + id
   + name
   + description
@@ -17,7 +17,7 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
     + url
     + taken_date
 
-- [ ] /api/clubs/:clubId -> all details of club by Id including:
+- [x] /api/clubs/:clubId -> all details of club by Id including:
   + id
   + name
   + description
@@ -40,8 +40,21 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
     + name
     + url
     + taken_date
+  + events: list of events, each has:
+    + id
+    + name
+    + start_time
+    + end_time
+    + description
+    + capacity
+    + registered
+    + images: lists of images, each has:
+      + id
+      + name
+      + url
+      + taken_date
 
-- [ ] /api/clubs/category/:categoryId -> get all clubs with category Id, each club includes:
+- [x] /api/clubs/category/:categoryId -> get all clubs with category Id, each club includes:
   + id
   + name
   + description
