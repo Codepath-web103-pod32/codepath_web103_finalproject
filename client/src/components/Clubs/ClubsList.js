@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import EventCard from "./EventCard";
-import './EventsList.css';
+import ClubCard from "./ClubCard";
+import '../Events/EventsList.css';
+import "./Clubs.css";
 
-const EventsList = () => {
+const ClubsList = () => {
   const [events, setEvents] = useState(null);
   const [categories, setCategories] = useState([]);
   const [locations, setLocations] = useState([]);
@@ -11,7 +12,6 @@ const EventsList = () => {
   const [selectedLocation, setSelectedLocation] = useState('');
   const [isAvailable, setIsAvailable] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-
 
   useEffect(() => {
     fetchCategories();
@@ -38,23 +38,16 @@ const EventsList = () => {
       const res = await axios.get(url);
       locationEvents = res.data;
     }
-  
-    // Fetch available events if availability is selected
-    if (isAvailable) {
-      const url = 'http://localhost:3003/api/events/available';
-      const res = await axios.get(url);
-      availableEvents = res.data;
-    }
 
     if (searchQuery) {
-      const url = `http://localhost:3003/api/events/search/${searchQuery}`;
-      const res = await axios.get(url);
-      filterEvents = res.data;
-  }
+        const url = `http://localhost:3003/api/clubs/search/${searchQuery}`;
+        const res = await axios.get(url);
+        filterEvents = res.data;
+    }
   
     // If no filters are selected, fetch all events
-    if (!selectedCategory && !selectedLocation && !isAvailable & !searchQuery) {
-      const url = 'http://localhost:3003/api/events';
+    if (!selectedCategory && !selectedLocation && !isAvailable && !searchQuery) {
+      const url = 'http://localhost:3003/api/clubs';
       const res = await axios.get(url);
       setEvents(res.data);
       return;
@@ -72,7 +65,7 @@ const EventsList = () => {
     if (selectedCategory) filterArrays.push(categoryEvents);
     if (selectedLocation) filterArrays.push(locationEvents);
     if (isAvailable) filterArrays.push(availableEvents);
-    if (searchQuery) filterArrays.push(filterEvents);
+    if (searchQuery) filterArrays.push(filterEvents)
   
     // Find the intersection of events if multiple filters are applied, otherwise use the single array
     const filteredEvents = filterArrays.length > 1 ? intersectEvents(filterArrays) : filterArrays[0];
@@ -95,12 +88,12 @@ const EventsList = () => {
     setSelectedCategory(e.target.value);
   };
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
   const handleLocationChange = (e) => {
     setSelectedLocation(e.target.value);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
   };
 
   const handleAvailabilityChange = (e) => {
@@ -123,16 +116,6 @@ const EventsList = () => {
           </option>
         ))}
       </select>
-
-      <h3>Availability</h3>
-      <label>
-        <input
-          type="checkbox"
-          checked={isAvailable}
-          onChange={handleAvailabilityChange}
-        />
-         <span style={{marginLeft: "5px"}}>Available</span>
-      </label>
       
       <div className="location-filter">
       <h3>Locations</h3>
@@ -146,14 +129,15 @@ const EventsList = () => {
       </select>
       </div>
 
-      <div className="search-filter">
+      {/* Search Bar */}
+  <div className="search-filter">
     <h3>Search</h3>
     <input 
       type="text" 
       value={searchQuery} 
       onChange={handleSearchChange} 
       placeholder="Search events..." 
-      className="filter-events" 
+      className="filter-input" 
     />
   </div>
 
@@ -164,11 +148,12 @@ const EventsList = () => {
 
     <div className="event-grid">
       {events.map((event) => (
-        <EventCard key={event.id} event={event} />
+        // <p>event</p>
+        <ClubCard key={event.id} club={event} />
       ))}
     </div>: <div className='center-content'>None</div>: <div className='center-content'>Loading</div>}
   </div> 
   );
 };
 
-export default EventsList;
+export default ClubsList;

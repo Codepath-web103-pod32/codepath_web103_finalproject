@@ -1,0 +1,162 @@
+.club-page {
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+  }
+  
+  .club-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .club-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .club-categories {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .category-sticker {
+    background-color: #e0f7fa;
+    color: #007bff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin: 5px;
+    font-size: 0.9rem;
+  }
+  
+  /* Carousel */
+
+  .board-members-carousel {
+    margin: 5em auto;
+    width: 60%; /* Full-width carousel container */
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .board-member-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%; /* Set a specific width */
+    min-height: 200px;
+    margin: auto; /* Center each card within the slide */
+  }
+
+  .board-members-carousel .slick-arrow {
+    color: black !important;
+  }
+
+  .board-members-carousel .slick-arrow::before {
+    color: #007bff !important;
+  }
+
+  .board-members-carousel h2 {
+    margin-bottom: 2em;
+  }
+  
+  
+  .board-member-card h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  .board-member-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .board-member-card a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .board-member-card a:hover {
+    text-decoration: underline;
+  }
+  
+/* Club events */
+
+  .club-events {
+    margin-top: 10px;
+    justify-content: center;
+    text-align: center;
+    background: #f5f5f5;
+    padding: 2em 0px;
+  }
+
+  .club-events h2 {
+    margin-bottom: 2em;
+    text-align: center;
+  }
+
+  .events-club-desc {
+    margin-top: 2em;
+  }
+  
+  .events-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    display: inline-flex;
+  }
+  
+  .event-card {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+  }
+  
+  .event-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .event-card p {
+    font-size: 0.9rem;
+    color: #000000;
+    margin: 10px 0px;
+  }
+  
+  .event-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .slick-prev:before,
+  .slick-next:before {
+    color: #007bff;
+  }
+  
+
+
+  .club-register a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #333;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    width: 100%;
+  }
+  
+  .club-register a:hover {
+    background-color: #555;
+  }
