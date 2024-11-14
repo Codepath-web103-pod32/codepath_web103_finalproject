@@ -4,14 +4,19 @@ import ClubsList from "./components/Clubs/ClubsList";
 import ClubDetails from "./components/Clubs/ClubDetails";
 import EventDetails from './components/Events/EventDetails';
 import Navbar from "./components/Navbar";
+import Login from "./components/Logins/Login";
 
 function App() {
+  const API_URL = "http://localhost:3003"
+
   return (
     <>
     
     <Router>
     <Navbar />
       <Routes>
+        <Route path='/login' element={<Login api_url={API_URL}/>} />
+
         <Route path="/events" element={<EventsList />} />
         <Route path="/events/:id" element={<EventDetails />} />
 

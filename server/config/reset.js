@@ -23,7 +23,8 @@ const createTables = async () => {
       locations,
       images,
       clubs,
-      events
+      events,
+      users
     CASCADE;
 
     DROP EXTENSION IF EXISTS pg_trgm;
@@ -43,6 +44,14 @@ const createTables = async () => {
       description TEXT,
       capacity INT,
       registered INT
+    );
+
+    CREATE TABLE IF NOT EXISTS users (
+      id SERIAL PRIMARY KEY,
+      githubid INT NOT NULL,
+      username VARCHAR(100) NOT NULL,
+      avatarurl VARCHAR(500) NOT NULL,
+      accesstoken VARCHAR(500) NOT NULL
     );
 
     CREATE TABLE IF NOT EXISTS locations (
