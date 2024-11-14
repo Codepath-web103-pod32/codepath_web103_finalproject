@@ -9,5 +9,9 @@ router.get('/:eventId', eventsControllers.getEventById)
 router.get('/category/:categoryId', eventsControllers.getEventsByCategoryId)
 router.get('/location/:locationId', eventsControllers.getEventsByLocationId)
 router.get('/search/:searchName', eventsControllers.searchEventsByName)
+router.get('/user/:userGithubId', eventsControllers.getEventsByUserGithubId)
+
+router.post('/register/:eventId', eventsControllers.registerEventUser)
+router.delete('/register/:eventId', eventsControllers.unregisterEventUser)
 
 export default router

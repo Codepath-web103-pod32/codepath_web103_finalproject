@@ -226,6 +226,7 @@ const getAvailableEvents = async (_, res) => {
       SELECT *
       FROM events
       WHERE events.capacity > events.registered
+        AND events.start_time > NOW()
       ORDER BY id ASC
     `
     const results = await pool.query(selectEventsQuery)
@@ -300,6 +301,112 @@ const searchEventsByName = async (req, res) => {
   }
 }
 
+const registerEventUser = async (req, res) => {
+  // ChauPhan:
+  // TODO:
+  // - check if events.registered < events.capacity
+  try {
+    const eventId = parseInt(req.params.eventId)
+    const { githubId } = req.body
+
+    const createQuery = `
+      INSERT INTO event_users (event_id, github_id)
+      VALUES ($1, $2)
+      RETURNING *
+    `
+    const updateEventQuery = `
+      UPDATE events
+      SET registered = registered + 1
+      WHERE id = $1
+    `
+
+    const results = await pool.query(createQuery, [eventId, githubId])
+    const event = await pool.query(updateEventQuery, [eventId])
+
+    res.status(200).json(results.rows[0])
+  } catch (err) {
+    console.error('Register Event error: ', err)
+    res.status(409).json({error: err})
+  }
+}
+
+const unregisterEventUser = async (req, res) => {
+  try {
+    const eventId = parseInt(req.params.eventId)
+    const { githubId } = req.body
+
+    const deleteQuery = `
+      DELETE FROM event_users
+      WHERE event_id = $1
+        AND github_id = $2
+    `
+    const updateEventQuery = `
+      UPDATE events
+      SET registered = registered - 1
+      WHERE id = $1
+    `
+    const results = await pool.query(deleteQuery, [eventId, githubId])
+    const event = await pool.query(updateEventQuery, [eventId])
+
+    res.status(200).json(results.rows[0])
+  } catch (err) {
+    console.error('Unregistered Event error: ', err)
+    res.status(409).json({error: err})
+  }
+}
+
+const getEventsByUserGithubId = async (req, res) => {
+  const githubId = req.params.githubId
+  try {
+    //ChauPhan: query events by user github_id
+    const selectEventsQuery = `
+      SELECT
+        events.id,
+        events.name,
+        events.start_time,
+        events.end_time,
+        events.description,
+        events.capacity,
+        events.registered
+      FROM events
+      JOIN event_users
+      ON event_users.event_id = events.id
+      WHERE event_users.github_id = $1
+      ORDER BY id ASC
+    `
+    const results = await pool.query(selectEventsQuery, [githubId])
+    
+    //ChauPhan: query images for each event
+    const promises = results.rows.map(async (event) => {
+      const selectImagesQuery = `
+        SELECT
+          images.id,
+          images.name,
+          images.url,
+          images.taken_date
+        FROM images
+        JOIN event_images
+        ON event_images.image_id = images.id
+        WHERE event_images.event_id = $1
+      `
+      await pool.query(selectImagesQuery, [event.id])
+        .then(res => res.rows)
+        .then(res => {
+          event.images = res
+        })
+    })
+    await Promise.all(promises)
+
+    //ChauPhan: send the final event results
+    res.status(200).json(results.rows)
+
+  } catch (err) {
+    console.error('Get Events by Users Id error: ', err)
+    res.status(409).json({error: err})
+  }
+
+}
+
 export default {
   getEvents,
   getEventById,
@@ -307,4 +414,7 @@ export default {
   getEventsByLocationId,
   getAvailableEvents,
   searchEventsByName,
+  registerEventUser,
+  unregisterEventUser,
+  getEventsByUserGithubId,
 }

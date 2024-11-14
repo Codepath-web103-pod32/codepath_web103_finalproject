@@ -26,7 +26,7 @@ const verify = async (accessToken, refreshToken, profile, done) => {
     if (!user) {
       const results = await pool.query(
         `
-          INSERT INTO users (githubid, username, avatarurl, accesstoken)
+          INSERT INTO users (github_id, username, avatar_url, accesstoken)
           VALUES ($1, $2, $3, $4)
           RETURNING *;
         `,

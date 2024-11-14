@@ -5,6 +5,7 @@ import ClubDetails from "./components/Clubs/ClubDetails";
 import EventDetails from './components/Events/EventDetails';
 import Navbar from "./components/Navbar";
 import Login from "./components/Logins/Login";
+import MyEvents from './components/MyEvents/MyEvents';
 
 function App() {
   const API_URL = "http://localhost:3003"
@@ -15,6 +16,7 @@ function App() {
     <Router>
     <Navbar />
       <Routes>
+        {/* ChauPhan */}
         <Route path='/login' element={<Login api_url={API_URL}/>} />
 
         <Route path="/events" element={<EventsList />} />
@@ -22,6 +24,8 @@ function App() {
 
         <Route path="/clubs" element={<ClubsList />} />
         <Route path="/clubs/:id" element={<ClubDetails />} />
+
+        <Route path="/myevents" element={<MyEvents />} />
       </Routes>
     </Router>
     </>

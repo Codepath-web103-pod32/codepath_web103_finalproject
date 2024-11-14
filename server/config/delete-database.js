@@ -11,13 +11,17 @@ const deleteTables = async () => {
       event_locations,
       event_categories,
       event_images,
+      event_users,
       board_members,
       categories,
       locations,
       images,
       clubs,
-      events
+      events,
+      users
     CASCADE;
+
+    DROP EXTENSION IF EXISTS pg_trgm;
     `
   try {
     const res = await pool.query(createTablesQuery)

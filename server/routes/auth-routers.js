@@ -15,7 +15,7 @@ router.get('/login/success', (req, res) => {
 router.get('/login/fail', (_, res) => {
   res.status(401).json({
     success: false,
-    message: 'failuer'
+    message: 'failure'
   })
 })
 

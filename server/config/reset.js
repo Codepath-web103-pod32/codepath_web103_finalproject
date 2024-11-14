@@ -18,6 +18,7 @@ const createTables = async () => {
       event_locations,
       event_categories,
       event_images,
+      event_users,
       board_members,
       categories,
       locations,
@@ -48,9 +49,9 @@ const createTables = async () => {
 
     CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,
-      githubid INT NOT NULL,
+      github_id INT NOT NULL UNIQUE,
       username VARCHAR(100) NOT NULL,
-      avatarurl VARCHAR(500) NOT NULL,
+      avatar_url VARCHAR(500) NOT NULL,
       accesstoken VARCHAR(500) NOT NULL
     );
 
@@ -191,7 +192,21 @@ const createTables = async () => {
         REFERENCES events(id)
         ON DELETE CASCADE
     );
-
+    
+    CREATE TABLE IF NOT EXISTS event_users (
+      event_id INT,
+      github_id INT,
+      PRIMARY KEY(event_id, github_id),
+      CONSTRAINT fk_event
+        FOREIGN KEY(event_id)
+        REFERENCES events(id)
+        ON DELETE CASCADE,
+      CONSTRAINT fk_github
+        FOREIGN KEY(github_id)
+        REFERENCES users(github_id)
+        ON DELETE CASCADE
+    );
+    
     CREATE EXTENSION pg_trgm;
   `
 

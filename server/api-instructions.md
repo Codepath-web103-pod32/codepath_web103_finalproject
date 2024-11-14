@@ -174,7 +174,7 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
     + url
     + taken_date
 
-- [ ] /api/events/user/:userId -> get all events registered by the user Id, each event has:
+- [x] /api/events/user/:userGithubId -> get all events registered by the user GithubId, each event has: --> Not tested yet
   + id
   + name
   + start_time
@@ -187,6 +187,11 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
     + name
     + url
     + taken_date
+
+- [x] /api/events/register/:eventId -- POST request: body includes githubId of authorized User
+-> User registers the event --> Not tested yet
+- [x] /api/events/register/:eventId -- DELETE request: body includes githubId of authorized User
+-> User unregisters the event --> Not tested yet
 
 # Locations
 - [x] /api/locations -> get all locations with details
@@ -201,3 +206,24 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
   + id
   + name
   + description
+
+# Authentication
+- [x] auth/github
+
+- [x] auth/login/success: fetch this endpoint will get user, includes:
+  + id
+  + github_id
+  + username (github handle)
+  + avatar_url (github avatar)
+
+- [x] auth/login/fail
+
+- [x] auth/logout: fetch this endpoint will:
+  + clear cookie session
+  + get:
+    + status 'logout'
+    + empty user {}
+
+- [x] auth/github/callback: (not needed for front-end) used by passport
+  + redirect to homepage '/' when login successfully (can modify)
+  + redirect to login page '/login' when login fail (can modify)
