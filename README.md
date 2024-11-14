@@ -28,22 +28,22 @@ Backend:
 
 ### Clubs Display
 
-- [ ] Display all clubs and their basic info (e.g., name, category, description, number of members, board members, gallery).
-- [ ] Provide options for filtering and sorting clubs based on needs (e.g., category, number of members).
+- [ ✅] Display all clubs and their basic info (e.g., name, category, description, number of members, board members, gallery).
+- [ ✅] Provide options for filtering and sorting clubs based on needs (e.g., category, number of members).
 
-[gif goes here]
+![Milestone4](./milestone4.mp4)
 
 ### Clubs Details
 
-- [ ] A landing page for each club to display their info (e.g., name, description, board members, gallery, upcoming and past events, contact info, number of members).
+- [✅ ] A landing page for each club to display their info (e.g., name, description, board members, gallery, upcoming and past events, contact info, number of members).
 
-[gif goes here]
+![Milestone4](./milestone4.mp4)
 
 ### Events Display
 
 - [✅] Display all events and their basic info (e.g., name, club, date, location, description, number of registered members, number of waitlist).
 - [✅] Provide options for filtering and sorting events based on needs (e.g., category, date, location, register status).
-- [ ] Provide options for fuzzy searching events based on their names.
+- [✅] Provide options for fuzzy searching events based on their names.
 
 ![Milestone3](./milestone3.mp4)
 
