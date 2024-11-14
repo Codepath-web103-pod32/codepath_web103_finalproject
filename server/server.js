@@ -15,7 +15,7 @@ app.use('/api/events', eventsRouters)
 app.use('/api/categories', categoriesRouters)
 app.use('/api/locations', locationsRouters)
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3003
 
 app.listen(PORT, () => {
   console.log('Server listening on port: ', PORT)

@@ -46,10 +46,12 @@ Backend:
 - [✅] Provide options for fuzzy searching events based on their names.
 
 ![Milestone3](./milestone3.mp4)
+![Milestone3](./milestone3.mp4)
 
 ### Events Statistic
 
 - [ ] Statistic about events (e.g., joined/registered ratio, comments/feedbacks, rating)
+- [ ] Users can review all events they have registered
 - [ ] Users can review all events they have registered
 
 [gif goes here]
