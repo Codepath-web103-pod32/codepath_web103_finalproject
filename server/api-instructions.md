@@ -226,4 +226,4 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
 
 - [x] auth/github/callback: (not needed for front-end) used by passport
   + redirect to homepage '/' when login successfully (can modify)
-  + redirect to login page '/login' when login fail (can modify)
+  + redirect to login page '/login' when cancel login / login fail (can modify)
