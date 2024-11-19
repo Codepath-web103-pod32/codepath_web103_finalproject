@@ -12,29 +12,52 @@ const EventDetails = () => {
   const [isRegisterEnabled, setIsRegisterEnabled] = useState(false);
   const [banner, setBanner] = useState(null);
   const [view, setView] = useState('introduction');
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [user, setUser] = useState();
 
   useEffect(() => {
     const fetchEvent = async () => {
-      const eventInfo = eventsData.find((event) => event.id == id);
+      const response = await axios.get(`http://localhost:3003/api/events/${id}`);
+      const images = response.data.images;
+      setBanner(images[0].url);
+      setEvent(response.data);
       const currentTime = new Date();
-      const startTime = new Date(eventInfo.start_time);
-      const endTime = new Date(eventInfo.end_time);
-      
 
-      (eventInfo.registered < eventInfo.capacity &&
-      currentTime < startTime)
+      (response.data.registered < response.data.capacity &&
+        currentTime < new Date(response.data.start_time))
         ? setIsRegisterEnabled(true)
         : setIsRegisterEnabled(false);
-
-      setEvent(eventInfo);
-        const response = await axios.get(`http://localhost:3003/api/events/${id}`);
-        // const response = await axios.get(`/api/events/${id}`);
-        const images = response.data.images;
-        setBanner(images[0].url);
-        setEvent(response.data);
+        
     };
     fetchEvent();
   }, [id]);
+
+  // Chau Phan: get user info and check if user registered this event
+  const fetchRegisterdEvents = async (githubId) => {
+    const url = 'http://localhost:3003/api/events/my-events'
+    const res = await axios.get(url, {
+      params: {githubId: githubId}
+    })
+    if (res.data.length == 0 || !(res.data.filter(event => event.id === id).length)) {
+      setIsRegistered(false)
+    } else {
+      setIsRegistered(true)
+    }
+  }
+
+  const fetchRegisterdEventsFromAuthorizedUser = async () => {
+    const response = await fetch(
+      'http://localhost:3003/auth/login/success',
+      {credentials: 'include'}
+    )
+    const json = await response.json()
+    setUser(json.user)
+    fetchRegisterdEvents(json.user.github_id)
+  }
+
+  useEffect(() => {
+    fetchRegisterdEventsFromAuthorizedUser()
+  }, [])
 
     // Responsive settings for react-multi-carousel
   const responsive = {
@@ -51,6 +74,15 @@ const EventDetails = () => {
       items: 1,
     },
   };
+
+  const handleRegister = async () => {
+    if (isRegisterEnabled && !isRegistered) {
+      const url = `http://localhost:3003/api/events/register/${id}`
+      const res = await axios.post(url, {
+        params: { githubId: user.github_id }
+      })
+    }
+  }
 
   return (
     event && <div className="art-exhibition-container">
@@ -72,8 +104,8 @@ const EventDetails = () => {
         <p><strong>Starts:</strong> {new Date(event.start_time).toLocaleString()}</p>
         <p><strong>Ends:</strong> {new Date(event.end_time).toLocaleString()}</p>
         <p>{event.description}</p>
-        <button className="register-button" disabled={!isRegisterEnabled}>
-  {isRegisterEnabled ? "Register Now" : "Registration Closed"}
+        <button className="register-button"  onClick={handleRegister}>
+  {isRegistered ? "You are registered" : isRegisterEnabled ? "Register Now" : "Registration closed"}
 </button>
       </div>
     </section>: 

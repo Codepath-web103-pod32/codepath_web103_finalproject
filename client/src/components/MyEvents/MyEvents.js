@@ -29,7 +29,7 @@ const MyEvents = () => {
 
   useEffect(() => {
     fetchEventsFromAuthorizedUser()
-  }, []);
+  },[]);
 
 
   return (
