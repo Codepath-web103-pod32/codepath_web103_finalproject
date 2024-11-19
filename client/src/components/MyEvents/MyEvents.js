@@ -41,7 +41,7 @@ const MyEvents = () => {
 
       <div className="event-grid">
         {events.map((event) => (
-          <EventCard key={event.id} event={event} />
+          <EventCard key={event.id} event={event} displayUnregister={true}/>
         ))}
       </div>: <div className='center-content'>You have not registered any events!</div>: <div className='center-content'>Loading</div>}
     </div> 

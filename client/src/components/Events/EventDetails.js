@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import eventsData from "./eventsdata";
 import "./EventDetails.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -85,7 +84,6 @@ const EventDetails = () => {
         const res = await axios.post(url,
         {githubId: githubId}
         )
-        console.log(res.data)
         setEvent(res.data)
       }
 
@@ -127,8 +125,8 @@ const EventDetails = () => {
         <p><strong>Register:</strong> {event.registered}</p>
         <p>{event.description}</p>
         <button className="register-button" /*disabled={!isRegisterEnabled}*/ onClick={handleRegister}>
-  {isRegistered ? "You are registered" : isRegisterEnabled ? "Register Now" : "Registration closed"}
-</button>
+          {isRegistered ? "You are registered" : isRegisterEnabled ? "Register Now" : "Registration closed"}
+        </button>
       </div>
     </section>: 
     

@@ -324,6 +324,7 @@ const registerEventUser = async (req, res) => {
 }
 
 const unregisterEventUser = async (req, res) => {
+  const { githubId } = req.body
   try {
     const eventId = parseInt(req.params.eventId)
     const { githubId } = req.body
@@ -331,12 +332,12 @@ const unregisterEventUser = async (req, res) => {
     const deleteQuery = `
       DELETE FROM event_users
       WHERE event_id = $1
-        AND github_id = $2
+        AND github_id = $2;
     `
     const updateEventQuery = `
       UPDATE events
       SET registered = registered - 1
-      WHERE id = $1
+      WHERE id = $1;
     `
     const results = await pool.query(deleteQuery, [eventId, githubId])
     const event = await pool.query(updateEventQuery, [eventId])

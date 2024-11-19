@@ -6,9 +6,9 @@ const updateAvatar = async (req, res) => {
     const newAvatarUrl = req.body.newAvatarUrl
     const updateQuery = `
       UPDATE users
-      SET
-        users.avatar_url = $1
+      SET users.avatar_url = $1
       WHERE github_id = $2
+      RETURNING *;
     `
     const valueQuery = [newAvatarUrl, githubId]
     const result = await pool.query(updateQuery, valueQuery)
