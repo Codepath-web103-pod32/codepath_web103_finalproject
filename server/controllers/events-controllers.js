@@ -300,6 +300,7 @@ const registerEventUser = async (req, res) => {
   try {
     const eventId = parseInt(req.params.eventId)
     const { githubId } = req.body
+    console.log(githubId)
 
     const createQuery = `
       INSERT INTO event_users (event_id, github_id)

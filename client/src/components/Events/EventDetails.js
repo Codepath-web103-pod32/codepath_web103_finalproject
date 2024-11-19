@@ -38,7 +38,7 @@ const EventDetails = () => {
     const res = await axios.get(url, {
       params: {githubId: githubId}
     })
-    if (res.data.length == 0 || !(res.data.filter(event => event.id === id).length)) {
+    if (res.data.length === 0 || (res.data.filter(event => event.id == id).length == 0)) {
       setIsRegistered(false)
     } else {
       setIsRegistered(true)
@@ -75,13 +75,7 @@ const EventDetails = () => {
     },
   };
 
-  const handleRegister = async () => {
-    if (isRegisterEnabled && !isRegistered) {
-      const url = `http://localhost:3003/api/events/register/${id}`
-      const res = await axios.post(url, {
-        params: { githubId: user.github_id }
-      })
-    }
+  const handleRegister = () => {
   }
 
   return (
