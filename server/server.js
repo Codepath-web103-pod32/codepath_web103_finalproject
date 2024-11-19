@@ -10,6 +10,7 @@ import clubsRouters from './routes/clubs-routers.js'
 import eventsRouters from './routes/events-routers.js'
 import categoriesRouters from './routes/categories-routers.js'
 import locationsRouters from './routes/locations-routers.js'
+import usersRouters from './routes/users-routers.js'
 
 import authRoutes from './routes/auth-routers.js'
 
@@ -43,6 +44,7 @@ app.use('/api/clubs', clubsRouters)
 app.use('/api/events', eventsRouters)
 app.use('/api/categories', categoriesRouters)
 app.use('/api/locations', locationsRouters)
+app.use('/api/profile', usersRouters)
 
 const PORT = process.env.PORT || 3003
 

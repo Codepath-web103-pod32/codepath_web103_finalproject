@@ -5,7 +5,6 @@ import boardMembersData from '../data/board_members.js'
 import categoriesData from '../data/categories.js'
 import imagesData from '../data/images.js'
 import locationsData from '../data/locations.js'
-import clubEventsData from '../data/club_events.js'
 
 const createTables = async () => {
   const createTablesQuery = `
@@ -44,7 +43,12 @@ const createTables = async () => {
       end_time TIMESTAMPTZ,
       description TEXT,
       capacity INT,
-      registered INT
+      registered INT,
+      club_organizer INT,
+      CONSTRAINT fk_club
+        FOREIGN KEY(club_organizer)
+        REFERENCES clubs(id)
+        ON DELETE CASCADE
     );
 
     CREATE TABLE IF NOT EXISTS users (
@@ -179,20 +183,6 @@ const createTables = async () => {
         ON DELETE CASCADE
     );
 
-    CREATE TABLE IF NOT EXISTS club_events (
-      club_id INT,
-      event_id INT,
-      PRIMARY KEY(club_id, event_id),
-      CONSTRAINT fk_club
-        FOREIGN KEY(club_id)
-        REFERENCES clubs(id)
-        ON DELETE CASCADE,
-      CONSTRAINT fk_event
-        FOREIGN KEY(event_id)
-        REFERENCES events(id)
-        ON DELETE CASCADE
-    );
-    
     CREATE TABLE IF NOT EXISTS event_users (
       event_id INT,
       github_id INT,
@@ -306,8 +296,8 @@ const seedMainTablesData = async () => {
 
   eventsData.forEach(event => {
     const insertEventQuery = `
-      INSERT INTO events (name, start_time, end_time, description, capacity, registered)
-      VALUES ($1, $2, $3, $4, $5, $6)
+      INSERT INTO events (name, start_time, end_time, description, capacity, registered, club_organizer)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
     `
     const eventValues = [
       event.name,
@@ -315,7 +305,8 @@ const seedMainTablesData = async () => {
       event.endTime,
       event.description,
       event.capacity,
-      event.registered
+      event.registered,
+      event.club_organizer
     ]
     pool.query(insertEventQuery, eventValues, (err, _) => {
       if (err) {
@@ -458,27 +449,6 @@ const seedRelationTablesData = async () => {
       })
     })
 
-  })
-
-  clubEventsData.forEach((pair) => {
-    const club_name = clubsData[pair.club_id - 1].name
-    const event_name = eventsData[pair.event_id - 1].name
-
-    const insertClubEventQuery = `
-      INSERT INTO club_events (club_id, event_id)
-      SELECT c.id, e.id
-      FROM clubs AS c
-      JOIN events AS e
-      ON 1=1
-      WHERE c.name = '${club_name}'
-        AND e.name = '${event_name}'
-    `
-    pool.query(insertClubEventQuery, (err, _) => {
-      if (err) {
-        console.log(insertClubEventQuery)
-        console.error('error inserting club_events', err)
-      }
-    })
   })
 
 }

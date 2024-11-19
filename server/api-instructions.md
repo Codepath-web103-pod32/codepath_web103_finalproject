@@ -86,6 +86,7 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
   + description
   + capacity
   + registered
+  + club_organizer
   + images: lists of images, each has:
     + id
     + name
@@ -100,6 +101,7 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
   + description
   + capacity
   + registered
+  + club_organizer
   + locations: lists of locations, each has:
     + id
     + name
@@ -125,6 +127,7 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
   + description
   + capacity
   + registered
+  + club_organizer
   + images: lists of images, each has:
     + id
     + name
@@ -139,6 +142,7 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
   + description
   + capacity
   + registered
+  + club_organizer
   + images: lists of images, each has:
     + id
     + name
@@ -153,6 +157,7 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
   + description
   + capacity
   + registered
+  + club_organizer
   + images: lists of images, each has:
     + id
     + name
@@ -168,6 +173,7 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
   + description
   + capacity
   + registered
+  + club_organizer
   + images: lists of images, each has:
     + id
     + name
@@ -182,6 +188,7 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
   + description
   + capacity
   + registered
+  + club_organizer
   + images: lists of images, each has:
     + id
     + name
@@ -227,3 +234,7 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
 - [x] auth/github/callback: (not needed for front-end) used by passport
   + redirect to homepage '/' when login successfully (can modify)
   + redirect to login page '/login' when cancel login / login fail (can modify)
+
+# User
++ [x] /profile/update-avatar: PATCH request, body includes githubId and newAvatarUrl of authorized user
+-> update avatar to new avatar in user's profile

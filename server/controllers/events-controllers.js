@@ -44,7 +44,8 @@ const getEventById = async (req, res) => {
         events.end_time,
         events.description,
         events.capacity,
-        events.registered
+        events.registered,
+        events.club_organizer
       FROM events
       WHERE events.id = $1
     `
@@ -98,18 +99,7 @@ const getEventById = async (req, res) => {
     eventResult.images = imagesResults
 
     //ChauPhan: query all clubs organizing the event
-    const selectClubQuery = `
-      SELECT
-        clubs.id,
-        clubs.name
-      FROM clubs
-      JOIN club_events
-      ON club_events.club_id = clubs.id
-      WHERE club_events.event_id = $1
-    `
-    const clubs = await pool.query(selectClubQuery, [eventId])
-    const clubsResults = clubs.rows
-    eventResult.clubs = clubsResults
+    eventResult.clubs = [eventResult.club_organizer]
 
     //ChauPhan: send the final event result
     res.status(200).json(eventResult)
@@ -131,7 +121,8 @@ const getEventsByCategoryId = async (req, res) => {
         events.end_time,
         events.description,
         events.capacity,
-        events.registered
+        events.registered,
+        events.club_organizer
       FROM events
       JOIN event_categories
       ON event_categories.event_id = events.id
@@ -181,7 +172,8 @@ const getEventsByLocationId = async (req, res) => {
         events.end_time,
         events.description,
         events.capacity,
-        events.registered
+        events.registered,
+        events.club_organizer
       FROM events
       JOIN event_locations
       ON event_locations.event_id = events.id
@@ -367,7 +359,8 @@ const getEventsByUserGithubId = async (req, res) => {
         events.end_time,
         events.description,
         events.capacity,
-        events.registered
+        events.registered,
+        events.club_organizer
       FROM events
       JOIN event_users
       ON event_users.event_id = events.id

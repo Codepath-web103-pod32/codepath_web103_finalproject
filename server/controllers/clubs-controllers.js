@@ -123,9 +123,7 @@ const getClubById = async (req, res) => {
         events.capacity,
         events.registered
       FROM events
-      JOIN club_events
-      ON club_events.event_id = events.id
-      WHERE club_events.club_id = $1
+      WHERE events.club_organizer = $1
     `
     const events = await pool.query(selectEventsQuery, [clubId])
     const eventsResults = events.rows

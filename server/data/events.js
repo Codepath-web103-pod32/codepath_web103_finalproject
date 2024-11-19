@@ -9,7 +9,8 @@ const EVENTS = [
     "registered": 75,
     "location": [5, 6],
     "category": [1],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 1
   },
   {
     "id": 2,
@@ -21,7 +22,8 @@ const EVENTS = [
     "registered": 40,
     "location": [1],
     "category": [1, 2, 3],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 2
   },
   {
     "id": 3,
@@ -33,7 +35,8 @@ const EVENTS = [
     "registered": 150,
     "location": [7, 8, 9, 10],
     "category": [5],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 3
   },
   {
     "id": 4,
@@ -45,7 +48,8 @@ const EVENTS = [
     "registered": 250,
     "location": [4],
     "category": [2],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 4
   },
   {
     "id": 5,
@@ -57,7 +61,8 @@ const EVENTS = [
     "registered": 45,
     "location": [1, 4],
     "category": [2, 3, 5],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 5
   },
   {
     "id": 6,
@@ -69,7 +74,8 @@ const EVENTS = [
     "registered": 80,
     "location": [4],
     "category": [3, 4],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 6
   },
   {
     "id": 7,
@@ -81,7 +87,8 @@ const EVENTS = [
     "registered": 15,
     "location": [8],
     "category": [1, 2],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 7
   },
   {
     "id": 8,
@@ -93,7 +100,8 @@ const EVENTS = [
     "registered": 30,
     "location": [1, 4, 7, 9, 10],
     "category": [3],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 8
   },
   {
     "id": 9,
@@ -105,7 +113,8 @@ const EVENTS = [
     "registered": 30,
     "location": [9, 10],
     "category": [2, 4],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 9
   },
   {
     "id": 10,
@@ -117,7 +126,8 @@ const EVENTS = [
     "registered": 20,
     "location": [3],
     "category": [1, 2, 4],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 10
   },
   {
     "id": 11,
@@ -129,7 +139,8 @@ const EVENTS = [
     "registered": 50,
     "location": [5],
     "category": [1],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 1
   },
   {
     "id": 12,
@@ -141,7 +152,8 @@ const EVENTS = [
     "registered": 30,
     "location": [1],
     "category": [1],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 2
   },
   {
     "id": 13,
@@ -153,7 +165,8 @@ const EVENTS = [
     "registered": 20,
     "location": [9, 10],
     "category": [5],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 3
   },
   {
     "id": 14,
@@ -165,7 +178,8 @@ const EVENTS = [
     "registered": 30,
     "location": [9, 10],
     "category": [2, 5],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 4
   },
   {
     "id": 15,
@@ -177,7 +191,8 @@ const EVENTS = [
     "registered": 20,
     "location": [8],
     "category": [2, 5],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 5
   },
   {
     "id": 16,
@@ -189,7 +204,8 @@ const EVENTS = [
     "registered": 30,
     "location": [4, 5, 6],
     "category": [3, 4],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 6
   },
   {
     "id": 17,
@@ -201,7 +217,8 @@ const EVENTS = [
     "registered": 20,
     "location": [8],
     "category": [1],
-    "image": [1, 2, 3]
+    "image": [1, 2, 3],
+    "club_organizer": 7
   },
   {
     "id": 18,
@@ -213,8 +230,35 @@ const EVENTS = [
     "registered": 20,
     "location": [9, 10],
     "category": [3],
-    "image": [1, 2, 3]
-  }
+    "image": [1, 2, 3],
+    "club_organizer": 8
+  },
+  {
+    "id": 19,
+    "name": "Retro Dance",
+    "description": "Learn new dance moves and improve your skills.",
+    "startTime": "2024-12-12T18:00:00Z",
+    "endTime": "2024-12-12T20:00:00Z",
+    "capacity": 20,
+    "registered": 19,
+    "location": [9, 10],
+    "category": [2, 4],
+    "image": [1, 2, 3],
+    "club_organizer": 9
+  },
+  {
+    "id": 20,
+    "name": "New Horizontal Philosophy",
+    "description": "Explore complex philosophical questions and engage in thoughtful discussions.",
+    "startTime": "2025-12-15T14:00:00Z",
+    "endTime": "2025-12-15T16:00:00Z",
+    "capacity": 20,
+    "registered": 10,
+    "location": [3],
+    "category": [1, 2, 4],
+    "image": [1, 2, 3],
+    "club_organizer": 10
+  },
 ]
 
 export default EVENTS
