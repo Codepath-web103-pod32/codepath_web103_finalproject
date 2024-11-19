@@ -300,23 +300,23 @@ const registerEventUser = async (req, res) => {
   try {
     const eventId = parseInt(req.params.eventId)
     const { githubId } = req.body
-    console.log(githubId)
 
     const createQuery = `
       INSERT INTO event_users (event_id, github_id)
       VALUES ($1, $2)
-      RETURNING *
+      RETURNING *;
     `
     const updateEventQuery = `
       UPDATE events
       SET registered = registered + 1
       WHERE id = $1
+      RETURNING *;
     `
 
     const results = await pool.query(createQuery, [eventId, githubId])
     const event = await pool.query(updateEventQuery, [eventId])
 
-    res.status(200).json(results.rows[0])
+    res.status(200).json(event.rows[0])
   } catch (err) {
     console.error('Register Event error: ', err)
     res.status(409).json({error: err})

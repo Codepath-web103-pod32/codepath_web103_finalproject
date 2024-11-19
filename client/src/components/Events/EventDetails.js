@@ -76,6 +76,32 @@ const EventDetails = () => {
   };
 
   const handleRegister = () => {
+    if (!user || !user.id) {
+      alert('Please log in first!')
+    }
+    if (!isRegistered && isRegisterEnabled) {
+      const register = async (githubId) => {
+        const url = `http://localhost:3003/api/events/register/${id}`
+        const res = await axios.post(url,
+        {githubId: githubId}
+        )
+        console.log(res.data)
+        setEvent(res.data)
+      }
+
+      const registerEventForAuthorizedUser = async () => {
+        const response = await fetch(
+          'http://localhost:3003/auth/login/success',
+          {credentials: 'include'}
+        )
+        const json = await response.json()
+        setUser(json.user)
+        register(json.user.github_id)
+        setIsRegistered(true)
+      }
+
+      registerEventForAuthorizedUser()
+    }
   }
 
   return (
@@ -97,8 +123,10 @@ const EventDetails = () => {
         <h2>Introduction</h2>
         <p><strong>Starts:</strong> {new Date(event.start_time).toLocaleString()}</p>
         <p><strong>Ends:</strong> {new Date(event.end_time).toLocaleString()}</p>
+        <p><strong>Capacity:</strong> {event.capacity}</p>
+        <p><strong>Register:</strong> {event.registered}</p>
         <p>{event.description}</p>
-        <button className="register-button"  onClick={handleRegister}>
+        <button className="register-button" /*disabled={!isRegisterEnabled}*/ onClick={handleRegister}>
   {isRegistered ? "You are registered" : isRegisterEnabled ? "Register Now" : "Registration closed"}
 </button>
       </div>
