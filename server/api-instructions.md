@@ -180,7 +180,7 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
     + url
     + taken_date
 
-- [x] /api/events/user/:userGithubId -> get all events registered by the user GithubId, each event has: --> Not tested yet
+- [x] /api/events/my-events: GET request with body including githubId -> get all events registered by the user GithubId, each event has: --> Not tested yet
   + id
   + name
   + start_time

@@ -2,8 +2,8 @@ import pool from '../config/database.js'
 
 const updateAvatar = async (req, res) => {
   try {
-    const githubId = req.params.githubId
-    const newAvatarUrl = req.params.newAvatarUrl
+    const githubId = req.body.githubId
+    const newAvatarUrl = req.body.newAvatarUrl
     const updateQuery = `
       UPDATE users
       SET

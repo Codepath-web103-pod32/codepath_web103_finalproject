@@ -348,7 +348,7 @@ const unregisterEventUser = async (req, res) => {
 }
 
 const getEventsByUserGithubId = async (req, res) => {
-  const githubId = req.params.githubId
+  const githubId = req.body.githubId
   try {
     //ChauPhan: query events by user github_id
     const selectEventsQuery = `
