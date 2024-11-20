@@ -137,12 +137,12 @@ const Navbar = () => {
             <button className="dropdown-item" onClick={handleLogout}>
               Logout
             </button>
-            <button
+            {/* <button
               className="dropdown-item"
               onClick={() => alert('Edit Avatar clicked')}
             >
               Edit Avatar
-            </button>
+            </button> */}
           </div>
         )}
       </div>
