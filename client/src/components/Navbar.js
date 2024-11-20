@@ -6,7 +6,7 @@ import './Navbar.css';
 const Navbar = () => {
   
 
-  const API_URL = 'http://localhost:3003'
+  const API_URL = process.env.REACT_APP_BACKEND_URL
   const [user, setUser] = useState();
   const [newAvatarUrl, setNewAvatarUrl] = useState('');
   const [isEditingAvatar, setIsEditingAvatar] = useState(false);

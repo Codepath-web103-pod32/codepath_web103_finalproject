@@ -4,12 +4,14 @@ import EventCard from "../Events/EventCard";
 import '../Events/EventsList.css';
 
 const MyEvents = () => {
-  const API_URL = 'http://localhost:3003'
+  console.log(import.meta.env);
+
+  const API_URL = process.env.REACT_APP_BACKEND_URL
   const [user, setUser] = useState()
   const [events, setEvents] = useState(null);
 
   const fetchEvents = async (githubId) => {
-    const url = 'http://localhost:3003/api/events/my-events'
+    const url = `${API_URL}/api/events/my-events`
     const res = await axios.get(url, {
       params: {githubId: githubId}
     })
