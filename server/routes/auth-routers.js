@@ -44,8 +44,8 @@ router.get('/github', passport.authenticate(
 ))
 
 router.get('/github/callback', passport.authenticate('github', {
-  successRedirect: 'http://localhost:3000',
-  failureRedirect: 'http://localhost:3000/login'
+  successRedirect: 'http://localhost:3002/events',
+  failureRedirect: 'http://localhost:3003/login'
 }))
 
 export default router

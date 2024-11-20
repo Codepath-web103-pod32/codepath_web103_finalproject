@@ -134,4 +134,39 @@
     color: #555;
     font-size: 1rem;
   }
+
+
+  /* Button Registration */
+
+  .register-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Registered Button */
+  .register-button.registered {
+    background-color: #28a745; /* Green */
+  }
+  
+  /* Enabled Button */
+  .register-button.enabled {
+    background-color: #007bff; /* Blue */
+  }
+  
+  .register-button.enabled:hover {
+    background-color: #0056b3; /* Darker Blue */
+  }
+  
+  /* Disabled Button */
+  .register-button.disabled {
+    background-color: #6c757d; /* Gray */
+    cursor: not-allowed;
+  }
+  
   

@@ -27,7 +27,7 @@ const EventCard = ({ event, displayUnregister=false }) => {
     }
 
     unregisterEventForAuthorizedUser()
-    window.location.href = 'http://localhost:3000/myevents'
+    window.location.href = 'http://localhost:3003/myevents'
 
   }
 

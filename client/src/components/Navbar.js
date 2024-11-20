@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
+  
 
   const API_URL = 'http://localhost:3003'
-  const [user, setUser] = useState()
+  const [user, setUser] = useState();
+  const [newAvatarUrl, setNewAvatarUrl] = useState('');
+  const [isEditingAvatar, setIsEditingAvatar] = useState(false);
 
   const getUser = async () => {
     const response = await fetch(
@@ -30,29 +33,125 @@ const Navbar = () => {
     setUser(json)
   }
 
-  return (
-    <nav className="navbar">
-      <div className="navbar-logo">
-        <h1>Logo</h1>
-      </div>
-      <div className="navbar-links">
-        <Link to="/">Home</Link>
-        <Link to="/clubs">Clubs</Link>
-        <Link to="/events">Events</Link>
-        <Link to="/contact">Contact/About</Link>
-        <Link to="/myevents">My Events</Link>
+  const handleAvatarChange = async () => {
+    const response = await fetch(`${API_URL}/profile/update-avatar`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        githubId: user.github_id,
+        newAvatarUrl,
+      }),
+    });
+    const json = await response.json();
+    if (json.success) {
+      setUser((prevUser) => ({
+        ...prevUser,
+        avatar_url: newAvatarUrl,
+      }));
+      setNewAvatarUrl('');
+      setIsEditingAvatar(false);
+    }
+  };
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-        {/* ChauPhan */}
-        {user && user.id ?
-          <Link to="/" onClick={handleLogout}>Logout</Link> :
-          <Link to="/login">Login</Link>
-        }
-        {user && user.id ?
-          <>Hello {user.username}!</>:
-          <></>
-        }
+  const handleDropdownToggle = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  return (
+    // <nav className="navbar">
+    //   <div className="navbar-links">
+    //     <Link to="/">Home</Link>
+    //     <Link to="/clubs">Clubs</Link>
+    //     <Link to="/events">Events</Link>
+    //     <Link to="/myevents">My Events</Link>
+
+    //     {user && user.id ? (
+    //       <>
+    //         <Link to="/" onClick={handleLogout}>
+    //           Logout
+    //         </Link>
+    //         <div className="user-avatar-section">
+    //           <img
+    //             src={user.avatar_url}
+    //             alt={`${user.username}'s avatar`}
+    //             className="user-avatar"
+    //           />
+    //           <span>Hello {user.username}!</span>
+    //           <button
+    //             className="edit-avatar-button"
+    //             onClick={() => setIsEditingAvatar(true)}
+    //           >
+    //             Edit Avatar
+    //           </button>
+    //         </div>
+    //       </>
+    //     ) : (
+    //       <Link to="/login">Login</Link>
+    //     )}
+    //   </div>
+
+    //   {isEditingAvatar && (
+    //     <div className="edit-avatar-modal">
+    //       <h3>Edit Avatar</h3>
+    //       <input
+    //         type="url"
+    //         placeholder="Enter new avatar URL"
+    //         value={newAvatarUrl}
+    //         onChange={(e) => setNewAvatarUrl(e.target.value)}
+    //         className="avatar-input"
+    //       />
+    //       <button onClick={handleAvatarChange} className="save-avatar-button">
+    //         Save
+    //       </button>
+    //       <button
+    //         onClick={() => setIsEditingAvatar(false)}
+    //         className="cancel-avatar-button"
+    //       >
+    //         Cancel
+    //       </button>
+    //     </div>
+    //   )}
+    // </nav>
+
+    <nav className="navbar">
+    <div className="navbar-links">
+      <Link to="/">Home</Link>
+      <Link to="/clubs">Clubs</Link>
+      <Link to="/events">Events</Link>
+      <Link to="/myevents">My Events</Link>
+    </div>
+    {(user && user.id) ? <div className="user-avatar-section">
+      <div className="dropdown">
+        <img
+          src="https://avatars.githubusercontent.com/u/29196787" // Replace with dynamic user.avatar_url
+          alt="User Avatar"
+          className="user-avatar"
+          onClick={handleDropdownToggle}
+        />
+        {dropdownOpen && (
+          <div className="dropdown-menu">
+            <span>Hello rashmisubhash!</span>
+            <button className="dropdown-item" onClick={handleLogout}>
+              Logout
+            </button>
+            <button
+              className="dropdown-item"
+              onClick={() => alert('Edit Avatar clicked')}
+            >
+              Edit Avatar
+            </button>
+          </div>
+        )}
       </div>
-    </nav>
+    </div>: 
+    <div className='navbar-links'>
+      <Link to="/login">Login</Link>
+    </div>
+    }
+  </nav>
   );
 };
 

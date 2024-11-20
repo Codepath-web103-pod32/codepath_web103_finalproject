@@ -6,6 +6,7 @@ import EventDetails from './components/Events/EventDetails';
 import Navbar from "./components/Navbar";
 import Login from "./components/Logins/Login";
 import MyEvents from './components/MyEvents/MyEvents';
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
   const API_URL = "http://localhost:3003"
@@ -18,6 +19,8 @@ function App() {
       <Routes>
         {/* ChauPhan */}
         <Route path='/login' element={<Login api_url={API_URL}/>} />
+
+        <Route path="/" element={<HomePage />} />
 
         <Route path="/events" element={<EventsList />} />
         <Route path="/events/:id" element={<EventDetails />} />

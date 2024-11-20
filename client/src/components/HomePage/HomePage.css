@@ -1,0 +1,132 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Hero Section */
+  .hero {
+    background: url('https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fHVuaXZlcnNpdHklMjBldmVudHN8ZW58MHwwfDB8fHww') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .hero-buttons .btn {
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .hero-buttons .btn-primary {
+    background-color: #007bff;
+  }
+  
+  .hero-buttons .btn-secondary {
+    background-color: #6c757d;
+  }
+  
+  .hero-buttons .btn:hover {
+    opacity: 0.9;
+  }
+  
+  /* Featured Section */
+  .featured-section {
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .featured-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .card-img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+  
+  .btn-view {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    padding: 10px 15px;
+    border-radius: 5px;
+  }
+  
+  .btn-view:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Call-to-Action Section */
+  .cta-section {
+    background-color: #f8f9fa;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .cta-section .btn-primary {
+    background-color: #007bff;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .cta-section .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  

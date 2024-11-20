@@ -1,13 +1,19 @@
 /* Navbar.css */
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f9fa; /* Optional: Light background */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between links */
+}
   
   .navbar-logo h1 {
     font-size: 24px;
@@ -25,4 +31,105 @@
   .navbar-links a:hover {
     color: #555;
   }
+
+  /* Avatar */
+
+  .user-avatar-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    cursor: pointer;
+  }
+  
+  .edit-avatar-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .edit-avatar-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .avatar-input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .save-avatar-button,
+  .cancel-avatar-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .cancel-avatar-button {
+    background-color: #6c757d;
+  }
+
+  /* User dropdown */
+
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+    width: 150px;
+    z-index: 10;
+  }
+  
+  .dropdown-menu span {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .dropdown-item {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f1f1f1;
+  }
+  
   
