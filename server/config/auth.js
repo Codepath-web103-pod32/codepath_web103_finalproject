@@ -1,8 +1,8 @@
 import GitHubStrategy from 'passport-github2'
 import pool from './database.js'
 
-// const API_URL = process.env.VITE_REACT_APP_BACKEND_URL || process.env.DEPLOY_URL || ''
-const API_URL = process.env.DEPLOY_URL
+const API_URL = process.env.VITE_REACT_APP_BACKEND_URL || ''
+// const API_URL = process.env.DEPLOY_URL
 
 const options = {
   clientID: process.env.GITHUB_CLIENT_ID,
