@@ -6,7 +6,7 @@ Designed and developed by:
 - Rashmi Subhash
 - Chau Phan
 
-🔗 Link to deployed app:
+🔗 Link to deployed app: https://codepath-web103-finalproject-6sj6.onrender.com/
 
 ## About
 
@@ -26,6 +26,11 @@ Backend:
 
 ## Features
 
+### HomePage
+
+- [ ✅] Display few clubs and their basic info (e.g., name, image,...).
+- [ ✅] Display few events and their basic info (e.g., name, image,...).
+
 ### Clubs Display
 
 - [ ✅] Display all clubs and their basic info (e.g., name, category, description, number of members, board members, gallery).
@@ -44,27 +49,19 @@ Backend:
 - [✅] Display all events and their basic info (e.g., name, club, date, location, description, number of registered members, number of waitlist).
 - [✅] Provide options for filtering and sorting events based on needs (e.g., category, date, location, register status).
 - [✅] Provide options for fuzzy searching events based on their names.
+- [✅] Register for an event.
 
 ![Milestone3](./milestone3.mp4)
 ![Milestone3](./milestone3.mp4)
 
-### Events Statistic
+### Auth
 
-- [ ] Statistic about events (e.g., joined/registered ratio, comments/feedbacks, rating)
-- [ ] Users can review all events they have registered
-- [ ] Users can review all events they have registered
+- [✅] Github Login
 
-[gif goes here]
+### My Events
 
-### Clubs Management
-- [ ] Users can create new club
-- [ ] Users can modify or delete the created club
+- [✅] Able to see the list of events they registered to.
 
-### Events Management
-- [ ] Users can create new event
-- [ ] Users can modify or delete the created event
-
-### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
 
 ## Installation Instructions
 
