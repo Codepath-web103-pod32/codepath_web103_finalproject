@@ -50,7 +50,7 @@ const ClubsList = () => {
   
     // If no filters are selected, fetch all events
     if (!selectedCategory && !selectedLocation && !isAvailable && !searchQuery) {
-      const url = '${API_URL}/api/clubs';
+      const url = `${API_URL}/api/clubs`;
       const res = await axios.get(url);
       setEvents(res.data);
       return;
@@ -78,12 +78,12 @@ const ClubsList = () => {
   
 
   const fetchCategories = async () => {
-    const response = await axios.get('${API_URL}/api/categories');
+    const response = await axios.get(`${API_URL}/api/categories`);
     setCategories(response.data);
   };
 
   const fetchLocations = async () => {
-    const response = await axios.get('${API_URL}api/locations');
+    const response = await axios.get(`${API_URL}api/locations`);
     setLocations(response.data);
   };
 
