@@ -126,15 +126,16 @@ const Navbar = () => {
     {(user && user.id) ? <div className="user-avatar-section">
       <div className="dropdown">
         <img
-          src="https://avatars.githubusercontent.co
-Submissionm/u/29196787" // Replace with dynamic user.avatar_url
+//           src="https://avatars.githubusercontent.co
+// Submissionm/u/29196787" // Replace with dynamic user.avatar_url
+          src={user.avatar_url}
           alt="User Avatar"
           className="user-avatar"
           onClick={handleDropdownToggle}
         />
         {dropdownOpen && (
           <div className="dropdown-menu">
-            <span>Hello rashmisubhash!</span>
+            <span>Hello {user.username}!</span>
             <button className="dropdown-item" onClick={handleLogout}>
               Logout
             </button>
