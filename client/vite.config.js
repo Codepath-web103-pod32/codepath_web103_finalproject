@@ -5,6 +5,10 @@ import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  esbuild: {
+    loader: 'jsx', // Add this
+    include: /src\/.*\.jsx?$/, // Process .js and .jsx files
+  },
   build: {
     rollupOptions: {
       input: './public/index.html', // Path to your index.html
