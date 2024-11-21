@@ -4,7 +4,7 @@ import EventCard from "./EventCard";
 import './EventsList.css';
 
 const EventsList = () => {
-  const API_URL = process.env.REACT_APP_BACKEND_URL || ''
+  const API_URL = process.env.VITE_REACT_APP_BACKEND_URL || ''
   
   const [events, setEvents] = useState(null);
   const [categories, setCategories] = useState([]);

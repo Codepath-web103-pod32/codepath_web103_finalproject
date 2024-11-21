@@ -9,7 +9,7 @@ import MyEvents from './components/MyEvents/MyEvents.jsx';
 import HomePage from "./components/HomePage/HomePage.jsx";
 
 function App() {
-  const API_URL = process.env.REACT_APP_BACKEND_URL || ''
+  const API_URL = process.env.VITE_REACT_APP_BACKEND_URL || ''
 
   return (
     <>

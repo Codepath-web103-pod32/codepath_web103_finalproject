@@ -49,9 +49,15 @@ app.use('/api/profile', usersRouters)
 
 const PORT = process.env.PORT || 3003
 
-app.get('/*', (_, res) =>
-  res.sendFile(path.resolve('public', 'index.html'))
-)
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('public'))
+}
+
+if (process.env.NODE_ENV === 'production') {
+  app.get('/*', (_, res) =>
+      res.sendFile(path.resolve('public', 'index.html'))
+  )
+}
 
 app.listen(PORT, () => {
   console.log('Server listening on port: ', PORT)

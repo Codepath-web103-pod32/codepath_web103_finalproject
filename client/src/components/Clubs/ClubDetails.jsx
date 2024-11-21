@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 const ClubDetails = () => {
 
-  const API_URL = process.env.REACT_APP_BACKEND_URL || ''
+  const API_URL = process.env.VITE_REACT_APP_BACKEND_URL || ''
 
   const { id } = useParams();
   const [club, setClub] = useState(null);

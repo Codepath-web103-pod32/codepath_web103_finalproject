@@ -7,7 +7,7 @@ import ClubCard from "../Clubs/ClubCard";
 
 const HomePage = () => {
 
-const API_URL = process.env.REACT_APP_BACKEND_URL || ''
+const API_URL = process.env.VITE_REACT_APP_BACKEND_URL || ''
   const [events, setEvents] = useState(null);
   const [clubs, setClubs] = useState(null);
 
