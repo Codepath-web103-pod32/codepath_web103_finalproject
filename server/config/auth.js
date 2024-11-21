@@ -4,7 +4,7 @@ import pool from './database.js'
 const options = {
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: 'http://localhost:3003/auth/github/callback'
+  callbackURL: `${process.env.REACT_APP_BACKEND_URL}/auth/github/callback`
 }
 
 const verify = async (accessToken, refreshToken, profile, done) => {

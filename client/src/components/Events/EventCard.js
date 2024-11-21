@@ -4,12 +4,14 @@ import { format, parseISO } from 'date-fns';
 import axios from "axios";
 
 const EventCard = ({ event, displayUnregister=false }) => {
+  const API_URL = process.env.REACT_APP_BACKEND_URL || ''
+  
   const formattedStart = format(parseISO(event.start_time), "MMM d");
   const formattedEnd = format(parseISO(event.end_time), "MMM d");
 
   const handleUnregister = () => {
     const unregister = async (githubId) => {
-      const url = `http://localhost:3003/api/events/register/${event.id}`
+      const url = `${API_URL}/api/events/register/${event.id}`
       const res = await axios.delete(url,
       {data: {
         githubId: githubId,
@@ -19,7 +21,7 @@ const EventCard = ({ event, displayUnregister=false }) => {
 
     const unregisterEventForAuthorizedUser = async () => {
       const response = await fetch(
-        'http://localhost:3003/auth/login/success',
+        `${API_URL}/auth/login/success`,
         {credentials: 'include'}
       )
       const json = await response.json()
@@ -27,7 +29,7 @@ const EventCard = ({ event, displayUnregister=false }) => {
     }
 
     unregisterEventForAuthorizedUser()
-    window.location.href = 'http://localhost:3003/myevents'
+    window.location.href = `${API_URL}/myevents`
 
   }
 

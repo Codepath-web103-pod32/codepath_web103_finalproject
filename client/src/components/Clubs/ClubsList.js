@@ -5,6 +5,9 @@ import '../Events/EventsList.css';
 import "./Clubs.css";
 
 const ClubsList = () => {
+
+  const API_URL = process.env.REACT_APP_BACKEND_URL || ''
+
   const [events, setEvents] = useState(null);
   const [categories, setCategories] = useState([]);
   const [locations, setLocations] = useState([]);
@@ -27,27 +30,27 @@ const ClubsList = () => {
   
     // Fetch events by category if a category is selected
     if (selectedCategory) {
-      const url = `http://localhost:3003/api/events/category/${selectedCategory}`;
+      const url = `${API_URL}/api/events/category/${selectedCategory}`;
       const res = await axios.get(url);
       categoryEvents = res.data;
     }
   
     // Fetch events by location if a location is selected
     if (selectedLocation) {
-      const url = `http://localhost:3003/api/events/location/${selectedLocation}`;
+      const url = `${API_URL}/api/events/location/${selectedLocation}`;
       const res = await axios.get(url);
       locationEvents = res.data;
     }
 
     if (searchQuery) {
-        const url = `http://localhost:3003/api/clubs/search/${searchQuery}`;
+        const url = `${API_URL}/api/clubs/search/${searchQuery}`;
         const res = await axios.get(url);
         filterEvents = res.data;
     }
   
     // If no filters are selected, fetch all events
     if (!selectedCategory && !selectedLocation && !isAvailable && !searchQuery) {
-      const url = 'http://localhost:3003/api/clubs';
+      const url = '${API_URL}/api/clubs';
       const res = await axios.get(url);
       setEvents(res.data);
       return;
@@ -75,12 +78,12 @@ const ClubsList = () => {
   
 
   const fetchCategories = async () => {
-    const response = await axios.get('http://localhost:3003/api/categories');
+    const response = await axios.get('${API_URL}/api/categories');
     setCategories(response.data);
   };
 
   const fetchLocations = async () => {
-    const response = await axios.get('http://localhost:3003/api/locations');
+    const response = await axios.get('${API_URL}api/locations');
     setLocations(response.data);
   };
 

@@ -3,6 +3,8 @@ import passport from "passport"
 
 const router = express.Router()
 
+const API_URL = process.env.REACT_APP_BACKEND_URL || ''
+
 router.get('/login/success', (req, res) => {
   if (req.user) {
     res.status(200).json({
@@ -44,8 +46,8 @@ router.get('/github', passport.authenticate(
 ))
 
 router.get('/github/callback', passport.authenticate('github', {
-  successRedirect: 'http://localhost:3002/',
-  failureRedirect: 'http://localhost:3003/login'
+  successRedirect: `${API_URL}/`,
+  failureRedirect: `${API_URL}/login`
 }))
 
 export default router

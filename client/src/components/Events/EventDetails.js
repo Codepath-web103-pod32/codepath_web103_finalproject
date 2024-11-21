@@ -6,6 +6,8 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 const EventDetails = () => {
+  const API_URL = process.env.REACT_APP_BACKEND_URL || ''
+
   const { id } = useParams();
   const [event, setEvent] = useState(null);
   const [isRegisterEnabled, setIsRegisterEnabled] = useState(false);
@@ -17,7 +19,7 @@ const EventDetails = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       const response = await axios.get(
-        `http://localhost:3003/api/events/${id}`
+        `${API_URL}/api/events/${id}`
       );
       const images = response.data.images;
       setBanner(images[0].url);
@@ -34,7 +36,7 @@ const EventDetails = () => {
 
   // Chau Phan: get user info and check if user registered this event
   const fetchRegisterdEvents = async (githubId) => {
-    const url = "http://localhost:3003/api/events/my-events";
+    const url = `${API_URL}/api/events/my-events`;
     const res = await axios.get(url, {
       params: { githubId: githubId },
     });
@@ -49,7 +51,7 @@ const EventDetails = () => {
   };
 
   const fetchRegisterdEventsFromAuthorizedUser = async () => {
-    const response = await fetch("http://localhost:3003/auth/login/success", {
+    const response = await fetch(`${API_URL}/auth/login/success`, {
       credentials: "include",
     });
     const json = await response.json();
@@ -83,14 +85,14 @@ const EventDetails = () => {
     }
     if (!isRegistered && isRegisterEnabled) {
       const register = async (githubId) => {
-        const url = `http://localhost:3003/api/events/register/${id}`;
+        const url = `${API_URL}/api/events/register/${id}`;
         const res = await axios.post(url, { githubId: githubId });
         setEvent(res.data);
       };
 
       const registerEventForAuthorizedUser = async () => {
         const response = await fetch(
-          "http://localhost:3003/auth/login/success",
+          `${API_URL}/auth/login/success`,
           { credentials: "include" }
         );
         const json = await response.json();

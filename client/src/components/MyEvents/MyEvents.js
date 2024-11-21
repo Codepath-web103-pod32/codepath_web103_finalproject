@@ -6,7 +6,7 @@ import '../Events/EventsList.css';
 const MyEvents = () => {
   console.log(import.meta.env);
 
-  const API_URL = process.env.REACT_APP_BACKEND_URL
+  const API_URL = process.env.REACT_APP_BACKEND_URL || ''
   const [user, setUser] = useState()
   const [events, setEvents] = useState(null);
 

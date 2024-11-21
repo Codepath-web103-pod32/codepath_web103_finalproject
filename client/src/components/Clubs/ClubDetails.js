@@ -10,6 +10,9 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 
 const ClubDetails = () => {
+
+  const API_URL = process.env.REACT_APP_BACKEND_URL || ''
+
   const { id } = useParams();
   const [club, setClub] = useState(null);
   const [slidesToShow, setSlidesToShow] = useState(3);
@@ -18,7 +21,7 @@ const ClubDetails = () => {
 
   useEffect(() => {
     const fetchEvent = async () => {
-      const response = await axios.get(`http://localhost:3003/api/clubs/${id}`);
+      const response = await axios.get(`${API_URL}/api/clubs/${id}`);
       // const response = await axios.get(`/api/events/${id}`);
       const images = response.data.images;
 

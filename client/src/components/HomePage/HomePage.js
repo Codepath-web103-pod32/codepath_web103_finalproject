@@ -6,15 +6,17 @@ import EventCard from "../Events/EventCard";
 import ClubCard from "../Clubs/ClubCard";
 
 const HomePage = () => {
+
+const API_URL = process.env.REACT_APP_BACKEND_URL || ''
   const [events, setEvents] = useState(null);
   const [clubs, setClubs] = useState(null);
 
   const fetchEvents = async () => {
-    let url = "http://localhost:3003/api/events";
+    let url = `${API_URL}/api/events`;
     let res = await axios.get(url);
     setEvents(res.data);
 
-    url = "http://localhost:3003/api/clubs";
+    url = `${API_URL}/api/clubs`;
     res = await axios.get(url);
     setClubs(res.data);
   };
