@@ -22,14 +22,14 @@ export default defineConfig({
     }
   },
   
-  server: {
-    proxy: {
-      '/api/events': {
-        target: process.env.DEPLOY_URL
-      },
-      'events': {
-        target: process.env.DEPLOY_URL
-      }
-    }
-  }
+  // server: {
+  //   proxy: {
+  //     '/api/events': {
+  //       target: process.env.DEPLOY_URL
+  //     },
+  //     'events': {
+  //       target: process.env.DEPLOY_URL
+  //     }
+  //   }
+  // }
 })
