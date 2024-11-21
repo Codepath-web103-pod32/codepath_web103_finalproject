@@ -50,7 +50,7 @@ const ClubsList = () => {
   
     // If no filters are selected, fetch all events
     if (!selectedCategory && !selectedLocation && !isAvailable && !searchQuery) {
-      const url = '${API_URL}/api/clubs';
+      const url = `${API_URL}/api/clubs`;
       const res = await axios.get(url);
       setEvents(res.data);
       return;
