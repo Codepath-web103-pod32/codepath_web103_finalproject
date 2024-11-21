@@ -3,7 +3,7 @@ import passport from "passport"
 
 const router = express.Router()
 
-const API_URL = process.env.VITE_REACT_APP_BACKEND_URL || ''
+const API_URL = process.env.VITE_REACT_APP_BACKEND_URL || process.env.DEPLOY_URL || ''
 
 router.get('/login/success', (req, res) => {
   if (req.user) {

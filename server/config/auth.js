@@ -1,12 +1,12 @@
 import GitHubStrategy from 'passport-github2'
 import pool from './database.js'
 
-const API_URL = process.env.VITE_REACT_APP_BACKEND_URL || ''
+const API_URL = process.env.VITE_REACT_APP_BACKEND_URL || process.env.DEPLOY_URL || ''
 
 const options = {
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: `https://codepath-web103-finalproject-6sj6.onrender.com/auth/github/callback`
+  callbackURL: `${API_URL}/auth/github/callback`
 }
 
 const verify = async (accessToken, refreshToken, profile, done) => {
