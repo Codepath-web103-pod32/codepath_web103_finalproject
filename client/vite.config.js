@@ -6,6 +6,9 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   build: {
+    rollupOptions: {
+      input: './public/index.html', // Path to your index.html
+    },
     outDir: '../server/public',
     emptyOutDir: true
   },
