@@ -4,7 +4,7 @@ import { format, parseISO } from 'date-fns';
 import axios from "axios";
 
 const EventCard = ({ event, displayUnregister=false }) => {
-  const API_URL = process.env.REACT_APP_BACKEND_URL || ''
+  const API_URL = process.env.VITE_REACT_APP_BACKEND_URL || ''
   
   const formattedStart = format(parseISO(event.start_time), "MMM d");
   const formattedEnd = format(parseISO(event.end_time), "MMM d");

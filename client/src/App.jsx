@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import EventsList from "./components/Events/EventsList";
-import ClubsList from "./components/Clubs/ClubsList";
-import ClubDetails from "./components/Clubs/ClubDetails";
-import EventDetails from './components/Events/EventDetails';
-import Navbar from "./components/Navbar";
-import Login from "./components/Logins/Login";
-import MyEvents from './components/MyEvents/MyEvents';
-import HomePage from "./components/HomePage/HomePage";
+import EventsList from "./components/Events/EventsList.jsx";
+import ClubsList from "./components/Clubs/ClubsList.jsx";
+import ClubDetails from "./components/Clubs/ClubDetails.jsx";
+import EventDetails from './components/Events/EventDetails.jsx';
+import Navbar from "./components/Navbar.jsx";
+import Login from "./components/Logins/Login.jsx";
+import MyEvents from './components/MyEvents/MyEvents.jsx';
+import HomePage from "./components/HomePage/HomePage.jsx";
 
 function App() {
-  const API_URL = process.env.REACT_APP_BACKEND_URL || '';
+  const API_URL = process.env.VITE_REACT_APP_BACKEND_URL || ''
 
   return (
     <>

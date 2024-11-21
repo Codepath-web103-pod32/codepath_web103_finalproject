@@ -11,7 +11,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      input: './public/index.html', // Path to your index.html
+      input: './index.html', // Path to your index.html
     },
     outDir: '../server/public',
     emptyOutDir: true
@@ -25,10 +25,10 @@ export default defineConfig({
   server: {
     proxy: {
       '/api/events': {
-        target: 'http://localhost:3003'
+        target: process.env.REACT_APP_BACKEND_URL
       },
       'events': {
-        target: 'http://localhost:3003'
+        target: process.env.REACT_APP_BACKEND_URL
       }
     }
   }
