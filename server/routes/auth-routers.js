@@ -46,7 +46,7 @@ router.get('/github', passport.authenticate(
 ))
 
 router.get('/github/callback', passport.authenticate('github', {
-  successRedirect: `${API_URL}/`,
+  successRedirect: `${API_URL}`,
   failureRedirect: `${API_URL}/login`
 }))
 
