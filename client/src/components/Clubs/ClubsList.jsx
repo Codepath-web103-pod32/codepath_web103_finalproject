@@ -6,7 +6,7 @@ import "./Clubs.css";
 
 const ClubsList = () => {
 
-  const API_URL = process.env.VITE_REACT_APP_BACKEND_URL || ''
+  const API_URL = process.env.REACT_APP_BACKEND_URL || ''
 
   const [events, setEvents] = useState(null);
   const [categories, setCategories] = useState([]);
@@ -78,12 +78,12 @@ const ClubsList = () => {
   
 
   const fetchCategories = async () => {
-    const response = await axios.get('${API_URL}/api/categories');
+    const response = await axios.get(`${API_URL}/api/categories`);
     setCategories(response.data);
   };
 
   const fetchLocations = async () => {
-    const response = await axios.get('${API_URL}api/locations');
+    const response = await axios.get(`${API_URL}api/locations`);
     setLocations(response.data);
   };
 
