@@ -1,6 +1,7 @@
 import './config/dotenv.js'
 import express from 'express'
 import cors from 'cors'
+import path from 'path'
 
 import passport from 'passport'
 import session from 'express-session'
