@@ -1,71 +1,96 @@
-# ClubHub
+# Milestone 5
 
-CodePath WEB103 Final Project
+This document should be completed and submitted during **Unit 9** of this course. You **must** check off all completed tasks in this document in order to receive credit for your work.
 
-Designed and developed by:
-- Rashmi Subhash
-- Chau Phan
+## Checklist
 
-🔗 Link to deployed app:
+This unit, be sure to complete all tasks listed below. To complete a task, place an `x` between the brackets.
 
-## About
+- [X] Deploy your project on Railway
+  - [X] In `readme.md`, add the link to your deployed project
+- [X] Update the status of issues in your project board as you complete them
+- [X] In `readme.md`, check off the features you have completed in this unit by adding a ✅ emoji in front of their title
+  - [X] Under each feature you have completed, **include a GIF** showing feature functionality
+- [X] In this document, complete the **Reflection** section below
+- [X] 🚩🚩🚩**Complete the Final Project Feature Checklist section below**, detailing each feature you completed in the project (ONLY include features you implemented, not features you planned)
+- [X] 🚩🚩🚩**Record a GIF showing a complete run-through of your app** that displays all the components included in the **Final Project Feature Checklist** below
+  - [X] Include this GIF in the **Final Demo GIF** section below
 
-### Description and Purpose
+## Final Project Feature Checklist
 
-ClubHub is a website for discovering and engaging with student clubs at TechNova university. Explore a wide range of clubs, from academic societies and sports teams to cultural organizations and interest groups. Stay up-to-date with upcoming events and keep track of your clubs' activities.
+Complete the checklist below detailing each baseline, custom, and stretch feature you completed in your project. This checklist will help graders look for each feature in the GIF you submit.
 
-### Inspiration
+### Baseline Features
 
-Inspired by the needs of keeping track of a large amount (~800) of club communities on the university of a member of our group, ClubHub was created to provide a centralized platform where students can easily discover, connect with, and keep track of their wide range of clubs and activities. This website aims to empower students to make the most of their university experience by connecting them with like-minded individuals and opportunities. 
+👉🏾👉🏾👉🏾 Check off each completed feature below.
 
-## Tech Stack
+- [X] The project includes an Express backend app and a React frontend app
+- [X] The project includes these backend-specific features:
+  - [X] At least one of each of the following database relationship in Postgres
+    - [X] one-to-many
+    - [X] many-to-many with a join table
+  - [X] A well-designed RESTful API
+    - [X] The API can respond to at least one of each type of request: GET, POST, PATCH, and DELETE
+    - [X] Routes follow proper naming conventions
+  - [X] The ability to reset the database to its default state
+- [X] The project includes these frontend-specific features:
+  - [X] At least one redirection
+  - [X] At least one interaction that the user can initiate and complete on the same page without navigating to a new page
+  - [X] Dynamic frontend routes created with React Router
+  - [X] Hierarchically designed React components
+    - [X] Components broken down into categories, including Page and Component types
+    - [X] Corresponding container components and presenter components as appropriate
+- [X] The project includes dynamic routes for both frontend and backend apps
+- [X] The project is deployed on Railway with all pages and features working
 
-Frontend:
+### Custom Features
 
-Backend:
+👉🏾👉🏾👉🏾 Check off each completed feature below.
 
-## Features
+- [X] The project gracefully handles errors
+- [X] The project includes a one-to-one database relationship
+- [ ] The project includes a slide-out pane or modal as appropriate for your use case
+- [X] The project includes a unique field within the join table
+- [ ] The project includes a custom non-RESTful route with corresponding controller actions
+- [X] The project allows filtering and/or sorting as appropriate for your use case
+- [X] Data is automatically generated in response to a certain event or user action. Examples include generating a default inventory for a new user starting a game or creating a starter set of tasks for a user creating a new task app account
+- [X] Data submitted via a POST or PATCH request is validated before the database is updated
 
-### Clubs Display
+### Stretch Features
 
-- [ ✅] Display all clubs and their basic info (e.g., name, category, description, number of members, board members, gallery).
-- [ ✅] Provide options for filtering and sorting clubs based on needs (e.g., category, number of members).
+👉🏾👉🏾👉🏾 Check off each completed feature below.
 
-![Milestone4](./milestone4.mp4)
+- [X] A subset of pages require the user to log in before accessing the content
+  - [X] Users can log in and log out via GitHub OAuth with Passport.js
+- [] Restrict available user options dynamically, such as restricting available purchases based on a user's currency
+- [X] Show a spinner while a page or page element is loading
+- [X] Disable buttons and inputs during the form submission process
+- [X] Disable buttons after they have been clicked
+- [] Users can upload images to the app and have them be stored on a cloud service
+- [ ] 🍞 [Toast messages](https://www.patternfly.org/v3/pattern-library/communication/toast-notifications/index.html) deliver simple feedback in response to user events
 
-### Clubs Details
+## Final Demo GIF
 
-- [✅ ] A landing page for each club to display their info (e.g., name, description, board members, gallery, upcoming and past events, contact info, number of members).
+🔗 [Here's a GIF walkthrough of the final project](👉🏾👉🏾👉🏾 your link here)
 
-![Milestone4](./milestone4.mp4)
+## Reflection
 
-### Events Display
+### 1. What went well during this unit?
 
-- [✅] Display all events and their basic info (e.g., name, club, date, location, description, number of registered members, number of waitlist).
-- [✅] Provide options for filtering and sorting events based on needs (e.g., category, date, location, register status).
-- [✅] Provide options for fuzzy searching events based on their names.
+Auth was smoother than expected.
 
-![Milestone3](./milestone3.mp4)
-![Milestone3](./milestone3.mp4)
+### 2. What were some challenges your group faced in this unit?
 
-### Events Statistic
+We had issues with deployment. We were unable to deploy the APIs and URLs due to the localhost conflict.
 
-- [ ] Statistic about events (e.g., joined/registered ratio, comments/feedbacks, rating)
-- [ ] Users can review all events they have registered
-- [ ] Users can review all events they have registered
+### 3. What were some of the highlights or achievements that you are most proud of in this project?
 
-[gif goes here]
+We were able to pull it off together!!
 
-### Clubs Management
-- [ ] Users can create new club
-- [ ] Users can modify or delete the created club
+### 4. Reflecting on your web development journey so far, how have you grown since the beginning of the course?
 
-### Events Management
-- [ ] Users can create new event
-- [ ] Users can modify or delete the created event
+We were able to grow quite a lot. Much more confident, lots of practical work
 
-### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
+### 5. Looking ahead, what are your goals related to web development, and what steps do you plan to take to achieve them?
 
-## Installation Instructions
-
-[instructions go here]
+Build more projects
